@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>The Book of Bhumi | Our Eternal Story</title>
+  <title>The Book of Bhumi | Forever</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Old+Standard+TT:ital@0;1&family=Parisienne&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -18,7 +18,6 @@
       margin: 0;
       height: 100vh;
       background: #0a0a0a;
-      background-image: radial-gradient(circle, #1a1a1a 0%, #000 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -26,7 +25,6 @@
       overflow: hidden;
     }
 
-    /* Full Window Book Container */
     .book-container {
       width: 100vw;
       height: 100vh;
@@ -37,18 +35,6 @@
       gap: 2px;
       box-shadow: inset 0 0 150px rgba(0,0,0,0.8);
       perspective: 2500px;
-    }
-
-    /* Decorative Binding */
-    .book-container::before {
-      content: '';
-      position: absolute;
-      left: 50%; top: 0; bottom: 0;
-      width: 40px;
-      background: linear-gradient(to right, transparent, rgba(0,0,0,0.3), transparent);
-      transform: translateX(-50%);
-      z-index: 10;
-      pointer-events: none;
     }
 
     .page {
@@ -82,76 +68,57 @@
       object-fit: contain;
       border: 15px solid #fff;
       box-shadow: 2px 10px 30px rgba(0,0,0,0.4);
-      filter: sepia(10%);
     }
 
-    h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 6vw, 5rem); color: #5d2a0c; margin: 0; }
-    h2 { font-family: 'Old Standard TT', serif; font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: #8b4513; margin-bottom: 30px; }
+    h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3.5rem, 7vw, 6rem); color: #5d2a0c; margin: 0; }
+    h2 { font-family: 'Old Standard TT', serif; font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: #8b4513; margin-bottom: 20px; }
     
     .love-letter { 
       font-family: 'Parisienne', cursive; 
-      font-size: clamp(1.4rem, 2.5vw, 2.2rem); 
-      line-height: 1.4; 
+      font-size: clamp(1.8rem, 3.5vw, 3rem); 
+      line-height: 1.3; 
       color: #3e2b1a; 
       white-space: pre-line; 
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
-    .story-body { font-size: clamp(1.1rem, 1.8vw, 1.4rem); line-height: 1.6; color: #4a3728; max-width: 85%; font-style: italic; }
+    .story-body { font-size: clamp(1.2rem, 2.2vw, 1.8rem); line-height: 1.6; color: #4a3728; max-width: 90%; font-style: italic; }
 
-    /* Navigation */
     .nav-layer { position: absolute; bottom: 5%; width: 100%; display: flex; justify-content: space-between; padding: 0 5%; pointer-events: none; z-index: 20; }
     .btn-nav {
       background: transparent;
       border: 1px solid var(--gold);
       color: var(--gold);
-      padding: 12px 30px;
+      padding: 12px 35px;
       cursor: pointer;
       font-family: 'Old Standard TT', serif;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       transition: 0.4s;
       pointer-events: auto;
     }
-    .btn-nav:hover { background: var(--gold); color: #fff; box-shadow: 0 0 15px rgba(197, 160, 89, 0.4); }
+    .btn-nav:hover { background: var(--gold); color: #fff; }
 
-    /* Quiz Styling */
-    .quiz-container { width: 100%; margin-top: 30px; }
+    .quiz-container { width: 100%; margin-top: 20px; }
     .quiz-option {
-      display: block; width: 100%; padding: 15px; margin: 12px 0;
-      background: rgba(139, 69, 19, 0.04); border: 1px solid rgba(139, 69, 19, 0.2);
-      cursor: pointer; font-family: 'Crimson Text', serif; font-size: 1.2rem; font-style: italic;
+      display: block; width: 100%; padding: 18px; margin: 10px 0;
+      background: rgba(139, 69, 19, 0.05); border: 1px solid var(--gold);
+      cursor: pointer; font-family: 'Crimson Text', serif; font-size: 1.3rem;
     }
-    .quiz-option:hover { background: rgba(197, 160, 89, 0.1); border-color: var(--gold); }
 
-    /* The Final Interaction */
     .ask-row { position: relative; width: 100%; height: 160px; margin-top: 40px; }
     .yes-btn { 
-      background: #7a1010; color: white; border: none; padding: 18px 70px; 
-      font-family: 'Great Vibes', cursive; font-size: 3.5rem; cursor: pointer; border-radius: 4px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      background: #7a1010; color: white; border: none; padding: 20px 80px; 
+      font-family: 'Great Vibes', cursive; font-size: 4rem; cursor: pointer;
     }
-    .no-btn { 
-      position: absolute; padding: 10px 25px; background: #dcdcdc; border: 1px solid #999; 
-      cursor: pointer; font-family: serif; font-size: 1rem; color: #555;
-    }
+    .no-btn { position: absolute; padding: 12px 30px; background: #ddd; border: 1px solid #999; cursor: pointer; font-size: 1.1rem; }
 
-    /* Page Turning Effect */
     .spread { display: none; width: 100%; height: 100%; transform-origin: center; }
-    .spread.active { display: flex; animation: flipForward 1.4s cubic-bezier(0.645, 0.045, 0.355, 1); }
-    .spread.active.back-anim { animation: flipBackward 1.4s cubic-bezier(0.645, 0.045, 0.355, 1); }
+    .spread.active { display: flex; animation: flipForward 1.4s ease-in-out; }
+    .spread.active.back-anim { animation: flipBackward 1.4s ease-in-out; }
 
-    @keyframes flipForward {
-      0% { transform: rotateY(100deg); opacity: 0; }
-      100% { transform: rotateY(0deg); opacity: 1; }
-    }
-    @keyframes flipBackward {
-      0% { transform: rotateY(-100deg); opacity: 0; }
-      100% { transform: rotateY(0deg); opacity: 1; }
-    }
-
-    /* Initial Cover Page Styling */
-    .cover-title { font-size: 6rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+    @keyframes flipForward { 0% { transform: rotateY(90deg); opacity: 0; } 100% { transform: rotateY(0deg); opacity: 1; } }
+    @keyframes flipBackward { 0% { transform: rotateY(-90deg); opacity: 0; } 100% { transform: rotateY(0deg); opacity: 1; } }
   </style>
 </head>
 <body>
@@ -161,11 +128,11 @@
     <div class="spread active" id="s1">
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_01.jpg"></div></div>
       <div class="page right-page">
-        <h2>A Private Collection</h2>
-        <h1 class="cover-title">Bhumi</h1>
-        <p class="story-body" style="font-size: 1.8rem;">"For the girl who changed my life completely, exactly when I never expected it."</p>
+        <h2>Our Eternal Story</h2>
+        <h1>Bhumi</h1>
+        <p class="story-body" style="font-size: 2.2rem;">"The girl who tamed the storm."</p>
         <div class="nav-layer" style="justify-content: flex-end;">
-          <button class="btn-nav" onclick="nav(2)">Open My Heart ➔</button>
+          <button class="btn-nav" onclick="nav(2)">Open ➔</button>
         </div>
       </div>
     </div>
@@ -174,13 +141,9 @@
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_02.jpg"></div></div>
       <div class="page right-page">
         <h2>Chapter II</h2>
-        <p class="love-letter">"My Dearest Sweetheart,
-        I wasn't looking for a miracle, but then I found you. You walked into my life and redesigned the stars."</p>
-        <p class="story-body">"I still remember the day everything shifted. It was sudden, beautiful, and the smartest thing the universe ever did for me."</p>
-        <div class="nav-layer">
-          <button class="btn-nav" onclick="nav(1, true)">⇠ Back</button>
-          <button class="btn-nav" onclick="nav(3)">Continue ➔</button>
-        </div>
+        <h1>The Stubborn One</h1>
+        <p class="story-body">"I was always that stubborn kid who thought he knew everything. Even now, I can be difficult, but the way you handle me—with your smarts and your endless patience—is a miracle. You came into my life and fixed a heart I didn't even know was broken."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(1, true)">⇠ Back</button><button class="btn-nav" onclick="nav(3)">Next ➔</button></div>
       </div>
     </div>
 
@@ -188,13 +151,14 @@
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_03.jpg"></div></div>
       <div class="page right-page">
         <h2>Chapter III</h2>
-        <h1>Brilliance</h1>
-        <p class="love-letter">"A Mind Beyond Compare"</p>
-        <p class="story-body">"It's not just your smile that keeps me captive, Bhumi. It's that brilliant mind of yours. You are the smartest person I know, and my favorite teacher in this school of life."</p>
-        <div class="nav-layer">
-          <button class="btn-nav" onclick="nav(2, true)">⇠ Back</button>
-          <button class="btn-nav" onclick="nav(4)">Continue ➔</button>
+        <h1>Inquiry I</h1>
+        <p class="love-letter">"What is your superpower?"</p>
+        <div class="quiz-container">
+          <button class="quiz-option" onclick="alert('Correct! You have the smartest brain I know.')">My brilliant intelligence 🧠</button>
+          <button class="quiz-option" onclick="alert('True, you handle my stubbornness perfectly.')">Dealing with my moods 😤</button>
+          <button class="quiz-option" onclick="alert('Exactly. You are my sweetheart.')">Being the love of my life ❤️</button>
         </div>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(2, true)">⇠ Back</button><button class="btn-nav" onclick="nav(4)">Next ➔</button></div>
       </div>
     </div>
 
@@ -202,15 +166,11 @@
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_04.jpg"></div></div>
       <div class="page right-page">
         <h2>Chapter IV</h2>
-        <p class="love-letter">"In a world of many,
-        You are the only 'one'.
-        The smartest choice I ever made,
-        The best thing I have done."</p>
-        <p class="story-body">"Every conversation with you is a journey I never want to end."</p>
-        <div class="nav-layer">
-          <button class="btn-nav" onclick="nav(3, true)">⇠ Back</button>
-          <button class="btn-nav" onclick="nav(5)">Continue ➔</button>
-        </div>
+        <p class="love-letter">"Your mind is my sanctuary,
+        Your love is my peace.
+        With you, the world is bright,
+        And my sorrows all cease."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(3, true)">⇠ Back</button><button class="btn-nav" onclick="nav(5)">Next ➔</button></div>
       </div>
     </div>
 
@@ -219,11 +179,8 @@
       <div class="page right-page">
         <h2>Chapter V</h2>
         <h1>Unexpected</h1>
-        <p class="story-body">"I used to think my path was set. Then you appeared—a beautiful, intelligent deviation that made my original plan look boring. You are the sweetheart I didn't know I was waiting for."</p>
-        <div class="nav-layer">
-          <button class="btn-nav" onclick="nav(4, true)">⇠ Back</button>
-          <button class="btn-nav" onclick="nav(6)">Continue ➔</button>
-        </div>
+        <p class="story-body">"I wasn't looking for a life-changer, but here you are. You came into my life exactly when I never expected it."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(4, true)">⇠ Back</button><button class="btn-nav" onclick="nav(6)">Next ➔</button></div>
       </div>
     </div>
 
@@ -231,17 +188,11 @@
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_06.jpg"></div></div>
       <div class="page right-page">
         <h2>Chapter VI</h2>
-        <h1>A Soul's Inquiry</h1>
-        <p class="story-body">"Bhumi, if we could relive one moment of our unexpected journey, which would you choose?"</p>
-        <div class="quiz-container">
-          <button class="quiz-option" onclick="alert('I knew you were smart! That was my favorite too.')">The first time our eyes met</button>
-          <button class="quiz-option" onclick="alert('You truly are my sweetheart. That was a perfect day.')">The first time we laughed together</button>
-          <button class="quiz-option" onclick="alert('Every second with you is my new favorite.')">Right now, reading this</button>
-        </div>
-        <div class="nav-layer">
-          <button class="btn-nav" onclick="nav(5, true)">⇠ Back</button>
-          <button class="btn-nav" onclick="nav(7)">Continue ➔</button>
-        </div>
+        <p class="love-letter">"Every time I'm lost,
+        your intelligence guides me.
+        You are my sweetheart
+        and my smartest advisor."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(5, true)">⇠ Back</button><button class="btn-nav" onclick="nav(7)">Next ➔</button></div>
       </div>
     </div>
 
@@ -249,9 +200,9 @@
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_07.jpg"></div></div>
       <div class="page right-page">
         <h2>Chapter VII</h2>
-        <p class="love-letter">"You are my peace."</p>
-        <p class="story-body">"The world is loud and confusing, but your intelligence and love create a sanctuary I never want to leave."</p>
-        <div class="nav-layer"><button class="btn-nav" onclick="nav(6, true)">⇠ Back</button><button class="btn-nav" onclick="nav(8)">Continue ➔</button></div>
+        <h1>The Life Changer</h1>
+        <p class="story-body">"You didn't just walk into my life; you redesigned it. Every moment with you makes me a better man."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(6, true)">⇠ Back</button><button class="btn-nav" onclick="nav(8)">Next ➔</button></div>
       </div>
     </div>
 
@@ -259,68 +210,83 @@
       <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_08.jpg"></div></div>
       <div class="page right-page">
         <h2>Chapter VIII</h2>
-        <p class="story-body">"Every photo of you tells a story of a girl who is twice as smart as she is beautiful—and you are breathtaking."</p>
-        <div class="nav-layer"><button class="btn-nav" onclick="nav(7, true)">⇠ Back</button><button class="btn-nav" onclick="nav(9)">Continue ➔</button></div>
+        <h1>Inquiry II</h1>
+        <p class="love-letter">"How much do I love you?"</p>
+        <div class="quiz-container">
+          <button class="quiz-option" onclick="alert('More than that!')">To the moon and back 🌙</button>
+          <button class="quiz-option" onclick="alert('Almost enough!')">As much as there are stars ⭐️</button>
+          <button class="quiz-option" onclick="alert('Correct. Infinite.')">More than words can ever write ✍️</button>
+        </div>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(7, true)">⇠ Back</button><button class="btn-nav" onclick="nav(9)">Next ➔</button></div>
       </div>
     </div>
 
     <div class="spread" id="s9">
-        <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_09.jpg"></div></div>
-        <div class="page right-page">
-          <h2>Chapter IX</h2>
-          <p class="love-letter">"My Life Changer"</p>
-          <p class="story-body">"I am not the same person I was before I met you. You made me better, smarter, and deeper."</p>
-          <div class="nav-layer"><button class="btn-nav" onclick="nav(8, true)">⇠ Back</button><button class="btn-nav" onclick="nav(10)">Continue ➔</button></div>
-        </div>
+      <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_09.jpg"></div></div>
+      <div class="page right-page">
+        <h2>Chapter IX</h2>
+        <p class="love-letter">"Smarter than the books you read,
+        You are everything I need.
+        With a look, you change the day,
+        In my heart, you’ll always stay."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(8, true)">⇠ Back</button><button class="btn-nav" onclick="nav(10)">Next ➔</button></div>
+      </div>
     </div>
 
     <div class="spread" id="s10">
-        <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_10.jpg"></div></div>
-        <div class="page right-page">
-          <h2>Chapter X</h2>
-          <p class="story-body">"I look at you and see my future. A future filled with intelligent conversation and endless love."</p>
-          <div class="nav-layer"><button class="btn-nav" onclick="nav(9, true)">⇠ Back</button><button class="btn-nav" onclick="nav(11)">Continue ➔</button></div>
-        </div>
+      <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_10.jpg"></div></div>
+      <div class="page right-page">
+        <h2>Chapter X</h2>
+        <h1>Brilliance</h1>
+        <p class="story-body">"I look at you and see my future. A future filled with intelligent conversation and endless love."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(9, true)">⇠ Back</button><button class="btn-nav" onclick="nav(11)">Next ➔</button></div>
+      </div>
     </div>
 
     <div class="spread" id="s11">
-        <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_11.jpg"></div></div>
-        <div class="page right-page">
-          <h2>Chapter XI</h2>
-          <p class="love-letter">"Sweetheart, 
-          You are the smartest choice 
-          I ever accidentally made."</p>
-          <div class="nav-layer"><button class="btn-nav" onclick="nav(10, true)">⇠ Back</button><button class="btn-nav" onclick="nav(12)">Continue ➔</button></div>
-        </div>
+      <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_11.jpg"></div></div>
+      <div class="page right-page">
+        <h2>Chapter XI</h2>
+        <p class="love-letter">"In the silence, in the sound,
+        It's you, my love, that I have found."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(10, true)">⇠ Back</button><button class="btn-nav" onclick="nav(12)">Next ➔</button></div>
+      </div>
     </div>
 
     <div class="spread" id="s12">
-        <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_12.jpg"></div></div>
-        <div class="page right-page">
-          <h2>Chapter XII</h2>
-          <p class="story-body">"If intelligence is the ability to adapt to change, then you are the smartest person alive, for you changed my entire world and I adapted instantly to loving you."</p>
-          <div class="nav-layer"><button class="btn-nav" onclick="nav(11, true)">⇠ Back</button><button class="btn-nav" onclick="nav(13)">Continue ➔</button></div>
+      <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_12.jpg"></div></div>
+      <div class="page right-page">
+        <h2>Chapter XII</h2>
+        <h1>Inquiry III</h1>
+        <p class="love-letter">"What are we?"</p>
+        <div class="quiz-container">
+          <button class="quiz-option" onclick="alert('Always.')">Best friends 🤝</button>
+          <button class="quiz-option" onclick="alert('Indeed.')">Soulmates ✨</button>
+          <button class="quiz-option" onclick="alert('The perfect answer.')">Everything to each other 🌍</button>
         </div>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(11, true)">⇠ Back</button><button class="btn-nav" onclick="nav(13)">Next ➔</button></div>
+      </div>
     </div>
 
     <div class="spread" id="s13">
-        <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_13.jpg"></div></div>
-        <div class="page right-page">
-          <h2>Chapter XIII</h2>
-          <p class="love-letter">"Ten thousand pages 
-          would still leave the best parts 
-          of you unsaid."</p>
-          <div class="nav-layer"><button class="btn-nav" onclick="nav(12, true)">⇠ Back</button><button class="btn-nav" onclick="nav(14)">Continue ➔</button></div>
-        </div>
+      <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_13.jpg"></div></div>
+      <div class="page right-page">
+        <h2>Chapter XIII</h2>
+        <p class="love-letter">"Ten thousand pages 
+        would still leave the best parts 
+        of you unsaid."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(12, true)">⇠ Back</button><button class="btn-nav" onclick="nav(14)">Next ➔</button></div>
+      </div>
     </div>
 
     <div class="spread" id="s14">
-        <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_14.jpg"></div></div>
-        <div class="page right-page">
-          <h2>Chapter XIV</h2>
-          <p class="story-body">"We are near the end of this digital book, but the real story—our story—is just reaching its most beautiful chapter."</p>
-          <div class="nav-layer"><button class="btn-nav" onclick="nav(13, true)">⇠ Back</button><button class="btn-nav" onclick="nav(15)">The Final Chapter ➔</button></div>
-        </div>
+      <div class="page left-page"><div class="photo-frame"><img src="public/bhumi_14.jpg"></div></div>
+      <div class="page right-page">
+        <h2>Chapter XIV</h2>
+        <h1>Almost Home</h1>
+        <p class="story-body">"We've seen our journey through these pages, but the real story—our story—is just reaching its most beautiful chapter."</p>
+        <div class="nav-layer"><button class="btn-nav" onclick="nav(13, true)">⇠ Back</button><button class="btn-nav" onclick="nav(15)">The Final Chapter ➔</button></div>
+      </div>
     </div>
 
     <div class="spread" id="s15">
@@ -328,11 +294,10 @@
       <div class="page right-page">
         <h2>Chapter XV</h2>
         <h1>The Question</h1>
-        <p class="love-letter" style="font-size: 1.8rem;">"Bhumi, will you be my sweetheart forever?"</p>
-        <p class="story-body">"I love you more than words can write on these rustic pages."</p>
-        
+        <p class="love-letter">"Bhumi, you are the smartest choice I ever made. 
+        Will you be my Valentine?"</p>
         <div class="ask-row" id="btnrow">
-          <button class="yes-btn" onclick="alert('My heart is yours forever, Bhumi! ❤️')">YES! ❤️</button>
+          <button class="yes-btn" onclick="alert('I love you forever, Bhumi! ❤️')">YES! ❤️</button>
           <button class="no-btn" id="noBtn">No</button>
         </div>
         <div class="nav-layer" style="justify-content: flex-start;">
@@ -349,7 +314,7 @@
       const next = document.getElementById('s' + num);
       if (next) {
         current.classList.remove('active', 'back-anim');
-        void next.offsetWidth; // Force reflow
+        void next.offsetWidth;
         if (isBack) next.classList.add('active', 'back-anim');
         else next.classList.add('active');
       }
@@ -357,14 +322,12 @@
 
     const noBtn = document.getElementById("noBtn");
     const btnrow = document.getElementById("btnrow");
-
     function moveNo() {
       const maxX = btnrow.clientWidth - noBtn.clientWidth;
       const maxY = btnrow.clientHeight - noBtn.clientHeight;
       noBtn.style.left = Math.random() * maxX + "px";
       noBtn.style.top = Math.random() * maxY + "px";
     }
-
     noBtn.addEventListener("mouseenter", moveNo);
     noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
   </script>
