@@ -3,312 +3,259 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>For Bhumi</title>
+  <title>Our Eternal Story | For Bhumi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Old+Standard+TT:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg1:#ffe6ef;
-      --bg2:#ffd6e6;
-      --card:#ffffff;
-      --text:#1b1b1b;
-      --muted:#6b6b6b;
-      --yes:#ff3b7a;
-      --yes2:#ff2f71;
-      --shadow: 0 20px 60px rgba(0,0,0,.12);
+    :root {
+      --parchment: #f2e6d0;
+      --ink: #2b1d0e;
+      --leather: #3d1f11;
+      --gold: #d4af37;
+      --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% 10%, var(--bg1), transparent 60%),
-                  radial-gradient(1200px 800px at 80% 90%, var(--bg2), transparent 60%),
-                  linear-gradient(135deg, #ffeaf2, #ffd7e7);
-      color:var(--text);
-      padding:24px;
+    
+    * { box-sizing: border-box; }
+    
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f0f;
+      background-image: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+      font-family: 'Crimson Text', serif;
+      color: var(--ink);
+      overflow: hidden;
     }
 
-    .card{
-      width:min(680px, 94vw);
-      background:var(--card);
-      border-radius:20px;
+    /* The Journal Binding */
+    .book-wrap {
+      width: min(550px, 90vw);
+      height: 750px;
+      position: relative;
+      background: var(--leather);
+      padding: 12px;
+      border-radius: 4px 12px 12px 4px;
       box-shadow: var(--shadow);
-      padding:34px 28px 28px;
-      position:relative;
-      overflow:hidden;
+      border-left: 15px solid #2a150c;
     }
 
-    .header{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      justify-content:center;
-      margin-bottom:18px;
+    /* Individual Pages */
+    .page {
+      width: 100%;
+      height: 100%;
+      background: var(--parchment);
+      background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png');
+      position: absolute;
+      top: 0; left: 0;
+      padding: 40px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: inset 5px 0 20px rgba(0,0,0,0.1);
+      border-radius: 0 8px 8px 0;
+      border: 1px solid rgba(0,0,0,0.05);
     }
 
-    .cat{
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      background: #f7c08a;
-      display:grid;
-      place-items:center;
-      position:relative;
-    }
-    .cat:before, .cat:after{
-      content:"";
-      position:absolute;
-      top:6px;
-      width:16px;height:16px;
-      background:#f7c08a;
-      transform:rotate(45deg);
-      border-radius:4px;
-    }
-    .cat:before{left:8px}
-    .cat:after{right:8px}
-    .cat .face{
-      position:relative;
-      width:40px;height:28px;
-      margin-top:6px;
-    }
-    .eye{
-      position:absolute;
-      top:6px;
-      width:6px;height:6px;
-      background:#222;
-      border-radius:50%;
-    }
-    .eye.left{left:8px}
-    .eye.right{right:8px}
-    .nose{
-      position:absolute;
-      left:50%;
-      top:14px;
-      transform:translateX(-50%);
-      width:7px;height:7px;
-      background:#ff5b7e;
-      border-radius:2px 2px 50% 50%;
-    }
-    .heart{
-      position:absolute;
-      right:-6px;
-      top:-8px;
-      width:18px;height:18px;
-      background:#ff2f71;
-      transform:rotate(45deg);
-      border-radius:4px;
-    }
-    .heart:before, .heart:after{
-      content:"";
-      position:absolute;
-      width:18px;height:18px;
-      background:#ff2f71;
-      border-radius:50%;
-    }
-    .heart:before{left:-9px; top:0}
-    .heart:after{left:0; top:-9px}
-
-    h1{
-      font-size: clamp(22px, 4vw, 34px);
-      margin:0;
-      text-align:center;
-      letter-spacing:-0.4px;
+    /* Page Turn Animation */
+    .page.active { 
+      display: flex; 
+      animation: flipIn 0.8s cubic-bezier(.15,.75,.5,1); 
+      z-index: 2;
     }
 
-    .sub{
-      margin: 10px 0 24px;
-      text-align:center;
-      color:var(--muted);
-      font-size:14px;
+    @keyframes flipIn {
+      from { transform: rotateY(-90deg); opacity: 0; }
+      to { transform: rotateY(0deg); opacity: 1; }
     }
 
-    .btnrow{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:18px;
-      margin-top: 6px;
-      position:relative;   /* IMPORTANT: contains the absolute No button */
-      height:74px;
+    /* Imagery and Frames */
+    .photo-frame {
+      width: 100%;
+      max-height: 320px;
+      border: 15px solid #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      margin: 20px 0;
+      object-fit: cover;
+      filter: sepia(20%) contrast(105%);
     }
 
-    button{
-      border:0;
-      cursor:pointer;
-      font-weight:700;
-      font-size:16px;
-      padding:16px 34px;
-      border-radius:999px;
-      transition: transform .08s ease, filter .2s ease;
-      user-select:none;
-      flex: 0 0 auto;       /* prevent stretching in flex */
-      white-space:nowrap;
+    h1 { font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: #5d2a0c; margin: 10px 0; }
+    h2 { font-family: 'Old Standard TT', serif; font-style: italic; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; color: #8b4513; }
+    
+    .story { font-size: 1.25rem; line-height: 1.6; margin: 15px 0; font-style: italic; color: #3e2b1a; }
+    .page-num { margin-top: auto; font-size: 0.9rem; opacity: 0.5; font-family: serif; }
+
+    /* Navigation */
+    .btn-turn {
+      background: none;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 10px 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      transition: 0.3s;
+      margin-top: 10px;
     }
-    button:active{transform:scale(.98)}
-    .yes{
-      background:linear-gradient(180deg,var(--yes),var(--yes2));
-      color:#fff;
-      box-shadow: 0 14px 30px rgba(255,47,113,.25);
+    .btn-turn:hover { background: var(--gold); color: white; }
+
+    /* Final Interactions */
+    .btn-row { position: relative; width: 100%; height: 100px; margin-top: 20px; }
+    .yes-btn { 
+      background: #8b0000; color: white; border: none; padding: 12px 40px; 
+      font-family: 'Great Vibes', cursive; font-size: 2rem; border-radius: 4px; cursor: pointer;
     }
-    .yes:hover{filter:brightness(1.02)}
-
-    /* FIXED NO BUTTON */
-    .no{
-      background:#f3f3f5;
-      color:#222;
-
-      position:absolute;     /* moves inside btnrow */
-      left: 62%;
-      top: 10px;
-
-      width: 120px;          /* explicit width stops "expanding" */
-      padding:16px 0;        /* keep height nice while width fixed */
-
-      transform-origin:center;
+    .no-btn { 
+      position: absolute; padding: 8px 15px; background: #dcdcdc; 
+      border: 1px solid #aaa; font-size: 0.8rem; cursor: pointer; border-radius: 2px;
     }
 
-    /* tiny bounce when it dodges */
-    @keyframes dodge {
-      0% { transform: translateY(0) scale(1); }
-      40%{ transform: translateY(-2px) scale(1.02); }
-      100%{ transform: translateY(0) scale(1); }
+    /* Questionnaire */
+    .quiz { width: 100%; margin: 15px 0; }
+    .quiz-opt { 
+      display: block; width: 100%; padding: 10px; margin: 5px 0; 
+      background: rgba(0,0,0,0.03); border: 1px solid rgba(139, 69, 19, 0.3); 
+      font-family: 'Crimson Text'; cursor: pointer; font-size: 1.1rem;
     }
-    .no.dodging{ animation: dodge 160ms ease; }
-
-    .tiny{
-      margin-top:14px;
-      text-align:center;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.45);
-      display:none;
-      place-items:center;
-      padding:24px;
-    }
-    .modal .box{
-      width:min(520px, 92vw);
-      background:#fff;
-      border-radius:18px;
-      padding:24px;
-      box-shadow: var(--shadow);
-      text-align:center;
-    }
-    .modal h2{margin:0 0 8px; font-size:22px}
-    .modal p{margin:0 0 18px; color:var(--muted)}
-    .close{
-      background:#111;
-      color:#fff;
-      padding:12px 18px;
-      border-radius:12px;
-      font-weight:700;
-    }
+    .quiz-opt:hover { background: rgba(139, 69, 19, 0.08); }
   </style>
 </head>
-
 <body>
-  <main class="card" id="card">
-    <div class="header">
-      <div class="cat" aria-hidden="true">
-        <span class="heart"></span>
-        <div class="face">
-          <span class="eye left"></span>
-          <span class="eye right"></span>
-          <span class="nose"></span>
-        </div>
+
+  <div class="book-wrap">
+    
+    <div class="page active" id="p1">
+      <h2>Chapter I</h2>
+      <h1>The Beginning</h1>
+      <p class="story">"Every great story starts with a single moment. Ours started with you."</p>
+      <img src="public/bhumi_01.jpg" class="photo-frame" style="transform: rotate(-2deg);">
+      <button class="btn-turn" onclick="nextPage(2)">Open ➔</button>
+      <div class="page-num">I</div>
+    </div>
+
+    <div class="page" id="p2">
+      <h2>Chapter II</h2>
+      <h1>Pure Brilliance</h1>
+      <p class="story">"I’m constantly in awe of how smart you are. Your mind is my favorite place to get lost."</p>
+      <img src="public/bhumi_02.jpg" class="photo-frame" style="transform: rotate(1deg);">
+      <button class="btn-turn" onclick="nextPage(3)">Continue ➔</button>
+      <div class="page-num">II</div>
+    </div>
+
+    <div class="page" id="p3">
+      <h2>Chapter III</h2>
+      <h1>The Sweetest Smile</h1>
+      <p class="story">"One look from you and the whole world feels right again."</p>
+      <img src="public/bhumi_03.jpg" class="photo-frame">
+      <button class="btn-turn" onclick="nextPage(4)">Turn Page ➔</button>
+      <div class="page-num">III</div>
+    </div>
+
+    <div class="page" id="p4">
+      <h2>Chapter IV</h2>
+      <h1>My Soulmate</h1>
+      <p class="story">"You're not just my girl; you're my best friend and my peace."</p>
+      <img src="public/bhumi_04.jpg" class="photo-frame" style="transform: rotate(-1deg);">
+      <button class="btn-turn" onclick="nextPage(5)">Turn Page ➔</button>
+      <div class="page-num">IV</div>
+    </div>
+
+    <div class="page" id="p5">
+      <h2>Chapter V</h2>
+      <h1>The Journey</h1>
+      <p class="story">"Every mile we travel, every laugh we share, it's all a treasure."</p>
+      <img src="public/bhumi_05.jpg" class="photo-frame">
+      <button class="btn-turn" onclick="nextPage(6)">Turn Page ➔</button>
+      <div class="page-num">V</div>
+    </div>
+
+    <div class="page" id="p6">
+      <h2>Chapter VI</h2>
+      <h1>Those Eyes</h1>
+      <p class="story">"I could read the stories in your eyes forever."</p>
+      <img src="public/bhumi_06.jpg" class="photo-frame" style="transform: rotate(2deg);">
+      <button class="btn-turn" onclick="nextPage(7)">Turn Page ➔</button>
+      <div class="page-num">VI</div>
+    </div>
+
+    <div class="page" id="p7">
+      <h2>Chapter VII</h2>
+      <h1>The Quiz</h1>
+      <p class="story">A quick test: Where is our favorite place to be?</p>
+      <div class="quiz">
+        <button class="quiz-opt" onclick="alert('Nice, but not quite!')">At a fancy cafe ☕</button>
+        <button class="quiz-opt" onclick="alert('Close, but try again!')">In a dream ☁️</button>
+        <button class="quiz-opt" onclick="alert('YES. Always.')">Wherever we are together ❤️</button>
       </div>
+      <button class="btn-turn" onclick="nextPage(8)">Next Chapter ➔</button>
+      <div class="page-num">VII</div>
     </div>
 
-    <h1><span id="name">Bhumi</span>, will you be my valentine?</h1>
-    <div class="sub">Pick wisely.</div>
-
-    <div class="btnrow" id="btnrow">
-      <button class="yes" id="yesBtn">Yes</button>
-      <button class="no" id="noBtn" type="button">No</button>
+    <div class="page" id="p8">
+      <h2>Chapter VIII</h2>
+      <h1>Strength</h1>
+      <p class="story">"I admire your strength and your heart more than words can say."</p>
+      <img src="public/bhumi_07.jpg" class="photo-frame">
+      <button class="btn-turn" onclick="nextPage(9)">Turn Page ➔</button>
+      <div class="page-num">VIII</div>
     </div>
 
-    <div class="tiny" id="hint">“No” seems a bit shy.</div>
-  </main>
-
-  <div class="modal" id="modal" role="dialog" aria-modal="true">
-    <div class="box">
-      <h2>Best decision.</h2>
-      <p id="msg">See you on Valentine’s, Bhumi.</p>
-      <button class="close" id="closeBtn">Close</button>
+    <div class="page" id="p9">
+      <h2>Chapter IX</h2>
+      <h1>Forever To Go</h1>
+      <p class="story">"Ten pages aren't enough to describe my love for you."</p>
+      <img src="public/bhumi_08.jpg" class="photo-frame" style="transform: rotate(-2deg);">
+      <button class="btn-turn" onclick="nextPage(10)">Final Chapter ➔</button>
+      <div class="page-num">IX</div>
     </div>
+
+    <div class="page" id="p10">
+      <h2>Chapter X</h2>
+      <h1>The Question</h1>
+      <p class="story">"Bhumi, you are the smartest, most beautiful person in my life. I have one last thing to ask..."</p>
+      <img src="public/bhumi_09.jpg" class="photo-frame" style="max-height: 200px;">
+      <h1>Will you be my Valentine?</h1>
+      
+      <div class="btn-row" id="btnrow">
+        <button class="yes-btn" id="yesBtn">Yes! ❤️</button>
+        <button class="no-btn" id="noBtn">No</button>
+      </div>
+      <div class="page-num">X</div>
+    </div>
+
   </div>
 
   <script>
-    // Customize these two lines only
-    const herName = "Bhumi";
-    const successMessage = "See you on Valentine’s, Bhumi.";
+    function nextPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      const next = document.getElementById('p' + num);
+      if (next) next.classList.add('active');
+    }
 
-    document.getElementById("name").textContent = herName;
-    document.getElementById("msg").textContent = successMessage;
-
+    // Dodging Logic
     const noBtn = document.getElementById("noBtn");
     const btnrow = document.getElementById("btnrow");
-    const hint = document.getElementById("hint");
 
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
-
-    // Place the "No" button initially (safe)
-    function placeNoInitial(){
-      const rowRect = btnrow.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
-      const pad = 6;
-
-      const maxX = Math.max(pad, rowRect.width - btnRect.width - pad);
-      const x = clamp(Math.floor(rowRect.width * 0.62), pad, maxX);
-
-      noBtn.style.left = x + "px";
-      noBtn.style.top = "10px";
-    }
-
-    // Move the "No" button to a random safe spot inside the button row
-    function moveNo(){
-      const rowRect = btnrow.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
-
-      const pad = 6;
-      const maxX = Math.max(pad, rowRect.width - btnRect.width - pad);
-      const maxY = Math.max(pad, rowRect.height - btnRect.height - pad);
-
-      const x = clamp(Math.floor(Math.random() * maxX), pad, maxX);
-      const y = clamp(Math.floor(Math.random() * maxY), pad, maxY);
-
+    function moveNo() {
+      const maxX = btnrow.clientWidth - noBtn.clientWidth;
+      const maxY = btnrow.clientHeight - noBtn.clientHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
       noBtn.style.left = x + "px";
       noBtn.style.top = y + "px";
-
-      // bounce effect
-      noBtn.classList.remove("dodging");
-      void noBtn.offsetWidth; // reflow to restart animation
-      noBtn.classList.add("dodging");
-
-      hint.textContent = "Still trying to press “No”?";
     }
 
-    // Trigger evasive behavior on hover/click/touch
     noBtn.addEventListener("mouseenter", moveNo);
-    noBtn.addEventListener("click", moveNo);
-    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); }, {passive:false});
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
 
-    // Yes button opens the success modal
-    const modal = document.getElementById("modal");
     document.getElementById("yesBtn").addEventListener("click", () => {
-      modal.style.display = "grid";
+      alert("I love you, Bhumi! You've made me the happiest person! ❤️🌹");
     });
-    document.getElementById("closeBtn").addEventListener("click", () => {
-      modal.style.display = "none";
-    });
-
-    window.addEventListener("load", placeNoInitial);
-    window.addEventListener("resize", placeNoInitial);
   </script>
 </body>
 </html>
+
+
