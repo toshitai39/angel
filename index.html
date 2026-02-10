@@ -339,7 +339,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You have no choice! ✨</title>
+    <title>You're mine! 🍗💖</title>
     <style>
         body {
             display: flex;
@@ -347,63 +347,65 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #ffe5ec; /* Super cute soft pink */
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fffaf0; /* Warm cream */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
             margin: 0;
         }
 
         .main-card {
             text-align: center;
-            background: white;
-            padding: 50px;
+            background: #ffffff;
+            padding: 40px;
             border-radius: 40px;
-            box-shadow: 0 20px 40px rgba(255, 71, 126, 0.15);
-            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+            max-width: 450px;
+            border: 4px solid #ffcad4;
             z-index: 10;
         }
 
         h1 {
-            color: #ff0a54;
-            font-size: 2rem;
+            color: #d00000;
+            font-size: 1.8rem;
             margin-bottom: 20px;
+            line-height: 1.4;
         }
 
         .btn-container {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 15px;
+            border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            font-size: 1rem;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
         }
 
         #yesBtn {
             background-color: #ff477e;
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
-            z-index: 100; /* Stays on top */
+            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.3);
+            z-index: 999;
         }
 
         #noBtn {
-            background-color: #ffccd5;
-            color: #ff0a54;
+            background-color: #f8edeb;
+            color: #d00000;
             position: relative;
         }
 
         .gif-container img {
-            width: 180px;
+            width: 160px;
             border-radius: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -411,7 +413,7 @@
 
     <div class="main-card">
         <div class="gif-container">
-            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwdXp3Mmc1N2Z0ZGt4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v4aDfzHe5_Nde/giphy.gif" alt="bears">
+            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwdXp3Mmc1N2Z0ZGt4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v4aDfzHe5_Nde/giphy.gif" alt="cute bears">
         </div>
         <h1 id="mainHeading">Will you be my Valentine? 🎀</h1>
         
@@ -423,16 +425,16 @@
 
     <script>
         const sarcasticMessages = [
-            "Wait... did your finger slip? 🤨",
-            "Why not?! You know I'm your favorite 🙄",
-            "I'm actually gonna cry. Real tears. 😭",
-            "I'm telling your mom on you 📱",
-            "Think about our future kids... 🍼",
-            "Is this because I didn't text back in 2 mins? 🤡",
-            "I'll buy you nuggets! 🍗",
-            "Don't be like this, pookie 🎀",
-            "I will haunt your dreams 👻",
-            "Okay now you're just being mean... 🥀"
+            "Are you serious? No Bihari Puchka for you! 🥟❌",
+            "I was gonna take you to Imagica... but okay 🎢👀",
+            "No Chicken Burger from Burger King? Your loss! 🍔💅",
+            "You know how much I love you, right? Stop playing! 🙄💖",
+            "I'm literally the best thing that happened to you 👸✨",
+            "Don't make me bring the Bihari spicy chutney! 🔥🌶️",
+            "Fine, I'll eat all the Puchkas myself. 🤤",
+            "Are you dizzy? The 'Yes' button is right there! 📍",
+            "Imagica tickets: CANCELLED. 🎟️😤",
+            "Stop being a drama queen and say yes! 👑🎀"
         ];
 
         let messageIndex = 0;
@@ -442,33 +444,34 @@
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
             
-            // 1. Change the "No" button text to something sarcastic
+            // 1. Change the text to the sarcastic food/trip messages
             noBtn.innerText = sarcasticMessages[messageIndex];
             messageIndex = (messageIndex + 1) % sarcasticMessages.length;
 
-            // 2. Make the "No" button run away
+            // 2. Teleport the "No" button
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.position = 'absolute';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
 
-            // 3. Make the "Yes" button BIGGER
-            yesScale += 0.4; // Increases size significantly each time
+            // 3. The "Yes" button gets massive
+            yesScale += 0.5;
             yesBtn.style.transform = `scale(${yesScale})`;
             
-            // 4. Update the heading to be more dramatic
-            document.getElementById('mainHeading').innerText = "RUDE. Say Yes already! 😤";
+            // 4. Change heading to something more sassy
+            document.getElementById('mainHeading').innerText = "Stop running and say YES! 😤🍔";
         }
 
         function accepted() {
             const card = document.querySelector('.main-card');
             card.innerHTML = `
                 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3RreGViaXVqZ3p6bmZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/57YpYV2rLpPqM/giphy.gif" style="width:200px">
-                <h1 style="color:#ff0a54">I KNEW YOU LOVED ME! 🥰✨</h1>
-                <p>Best decision you ever made, honestly. 💅</p>
+                <h1 style="color:#ff477e">I KNEW IT! 🥰✨</h1>
+                <p style="font-size: 1.2rem;">Burger King and Imagica date is ON! 🍔🎢🎈</p>
+                <p>Best choice you've made all year. 💅</p>
             `;
-            document.body.style.backgroundColor = "#ffafcc";
+            document.body.style.backgroundColor = "#ffc2d1";
         }
     </script>
 </body>
