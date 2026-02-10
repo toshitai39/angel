@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -331,5 +331,145 @@
     noBtn.addEventListener("mouseenter", moveNo);
     noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNo(); });
   </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You have no choice! ✨</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffe5ec; /* Super cute soft pink */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .main-card {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(255, 71, 126, 0.15);
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #ff0a54;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            font-size: 1rem;
+        }
+
+        #yesBtn {
+            background-color: #ff477e;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.4);
+            z-index: 100; /* Stays on top */
+        }
+
+        #noBtn {
+            background-color: #ffccd5;
+            color: #ff0a54;
+            position: relative;
+        }
+
+        .gif-container img {
+            width: 180px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <div class="gif-container">
+            <img id="statusGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHIwdXp3Mmc1N2Z0ZGt4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v4aDfzHe5_Nde/giphy.gif" alt="bears">
+        </div>
+        <h1 id="mainHeading">Will you be my Valentine? 🎀</h1>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="accepted()">YES! 💖</button>
+            <button id="noBtn" onmouseover="guiltTrip()">No 🥺</button>
+        </div>
+    </div>
+
+    <script>
+        const sarcasticMessages = [
+            "Wait... did your finger slip? 🤨",
+            "Why not?! You know I'm your favorite 🙄",
+            "I'm actually gonna cry. Real tears. 😭",
+            "I'm telling your mom on you 📱",
+            "Think about our future kids... 🍼",
+            "Is this because I didn't text back in 2 mins? 🤡",
+            "I'll buy you nuggets! 🍗",
+            "Don't be like this, pookie 🎀",
+            "I will haunt your dreams 👻",
+            "Okay now you're just being mean... 🥀"
+        ];
+
+        let messageIndex = 0;
+        let yesScale = 1;
+
+        function guiltTrip() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            // 1. Change the "No" button text to something sarcastic
+            noBtn.innerText = sarcasticMessages[messageIndex];
+            messageIndex = (messageIndex + 1) % sarcasticMessages.length;
+
+            // 2. Make the "No" button run away
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // 3. Make the "Yes" button BIGGER
+            yesScale += 0.4; // Increases size significantly each time
+            yesBtn.style.transform = `scale(${yesScale})`;
+            
+            // 4. Update the heading to be more dramatic
+            document.getElementById('mainHeading').innerText = "RUDE. Say Yes already! 😤";
+        }
+
+        function accepted() {
+            const card = document.querySelector('.main-card');
+            card.innerHTML = `
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3RreGViaXVqZ3p6bmZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/57YpYV2rLpPqM/giphy.gif" style="width:200px">
+                <h1 style="color:#ff0a54">I KNEW YOU LOVED ME! 🥰✨</h1>
+                <p>Best decision you ever made, honestly. 💅</p>
+            `;
+            document.body.style.backgroundColor = "#ffafcc";
+        }
+    </script>
 </body>
 </html>
