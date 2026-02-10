@@ -339,7 +339,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're mine! 🍗💖</title>
+    <title>Don't break my heart! 💔</title>
     <style>
         body {
             display: flex;
@@ -347,7 +347,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #fffaf0; /* Warm cream */
+            background-color: #fff0f3; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow: hidden;
             margin: 0;
@@ -358,17 +358,16 @@
             background: #ffffff;
             padding: 40px;
             border-radius: 40px;
-            box-shadow: 0 15px 35px rgba(255, 182, 193, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 71, 126, 0.2);
             max-width: 450px;
-            border: 4px solid #ffcad4;
+            border: 3px solid #ff85a1;
             z-index: 10;
         }
 
         h1 {
-            color: #d00000;
+            color: #c9184a;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            line-height: 1.4;
         }
 
         .btn-container {
@@ -392,18 +391,17 @@
         #yesBtn {
             background-color: #ff477e;
             color: white;
-            box-shadow: 0 5px 15px rgba(255, 71, 126, 0.3);
             z-index: 999;
         }
 
         #noBtn {
-            background-color: #f8edeb;
-            color: #d00000;
+            background-color: #ffccd5;
+            color: #c9184a;
             position: relative;
         }
 
         .gif-container img {
-            width: 160px;
+            width: 170px;
             border-radius: 20px;
             margin-bottom: 15px;
         }
@@ -425,16 +423,16 @@
 
     <script>
         const sarcasticMessages = [
-            "Are you serious? No Bihari Puchka for you! 🥟❌",
-            "I was gonna take you to Imagica... but okay 🎢👀",
-            "No Chicken Burger from Burger King? Your loss! 🍔💅",
-            "You know how much I love you, right? Stop playing! 🙄💖",
-            "I'm literally the best thing that happened to you 👸✨",
-            "Don't make me bring the Bihari spicy chutney! 🔥🌶️",
-            "Fine, I'll eat all the Puchkas myself. 🤤",
-            "Are you dizzy? The 'Yes' button is right there! 📍",
-            "Imagica tickets: CANCELLED. 🎟️😤",
-            "Stop being a drama queen and say yes! 👑🎀"
+            "Are you trying to kill me? I’m dying! 💀🩹",
+            "Fine, no Bihari Puchka with me  🥟❌",
+            "Think about the Chicken Burgers 🍔😭",
+            "I'm literally on the floor. Dead. 🛌🥀",
+            "No Imagica trip with me 🎢😤",
+            "You know how much I love you... 🙄",
+            "My heart just stopped. 0 BPM. I'm dead 📉💔",
+            "Is this the end? Goodbye world... 🌎👋",
+            "I'm telling everyone that my sweetheart broke my heart 📢🤡",
+            "Say yes or I'll haunt you while you eat Puchka everyday 👻🌶️"
         ];
 
         let messageIndex = 0;
@@ -444,32 +442,32 @@
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
             
-            // 1. Change the text to the sarcastic food/trip messages
+            // 1. Change text to dramatic "I'm dying" stuff
             noBtn.innerText = sarcasticMessages[messageIndex];
             messageIndex = (messageIndex + 1) % sarcasticMessages.length;
 
-            // 2. Teleport the "No" button
+            // 2. Button runs away
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
             noBtn.style.position = 'absolute';
             noBtn.style.left = x + 'px';
             noBtn.style.top = y + 'px';
 
-            // 3. The "Yes" button gets massive
+            // 3. Yes button gets HUGE
             yesScale += 0.5;
             yesBtn.style.transform = `scale(${yesScale})`;
             
-            // 4. Change heading to something more sassy
-            document.getElementById('mainHeading').innerText = "Stop running and say YES! 😤🍔";
+            // 4. Dramatic heading update
+            document.getElementById('mainHeading').innerText = "Look what you're doing to me! 😭🥀";
         }
 
         function accepted() {
             const card = document.querySelector('.main-card');
             card.innerHTML = `
                 <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3RreGViaXVqZ3p6bmZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4ZzZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/57YpYV2rLpPqM/giphy.gif" style="width:200px">
-                <h1 style="color:#ff477e">I KNEW IT! 🥰✨</h1>
-                <p style="font-size: 1.2rem;">Burger King and Imagica date is ON! 🍔🎢🎈</p>
-                <p>Best choice you've made all year. 💅</p>
+                <h1 style="color:#ff477e">I LIVED! 🥰✨</h1>
+                <p style="font-size: 1.2rem;">Burger King and Imagica are back on! 🍔🎢</p>
+                <p>I knew you couldn't resist me. 💅</p>
             `;
             document.body.style.backgroundColor = "#ffc2d1";
         }
